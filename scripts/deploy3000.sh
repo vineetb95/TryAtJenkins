@@ -3,4 +3,6 @@
 sudo -s
 cd /root/TryAtJenkins
 git pull origin master
-sh scripts/rest.sh
+pwd
+npm install
+pm2 restart 0
