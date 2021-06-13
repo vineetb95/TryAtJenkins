@@ -6,13 +6,19 @@ pipeline {
                 sh 'echo "Add build steps here"'
             }
         }
-        stage('Deploy to 3000') { 
+        stage("Deploy to 3000"){
             steps {
-//                 sh 'cd /root/TryAtJenkins/'
-//                 sh 'git pull origin master'
-                sh 'chmod 400 sampleEC2Jenkins.pem'
-                sh 'ssh -tt -i "sampleEC2Jenkins.pem" ec2-user@ec2-3-129-64-170.us-east-2.compute.amazonaws.com'
-                sh 'ls /root/TryAtJenkins'
+                script{
+                    def remote = [:]
+                    remote.name = "ec2-user"
+                    remote.host = "ec2-3-129-64-170.us-east-2.compute.amazonaws.com"
+                    remote.allowAnyHosts = true
+                    withCredentials([sshUserPrivateKey(credentialsId: 'dc51de26-3370-4d54-a86f-659d0ba2005b', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'ec2-user')]) {
+                        remote.user = 'ec2-user'
+                        remote.identityFile = identity
+                        sshScript remote: remote, script: 'scripts/deploy3000.sh'
+                    }
+                }
             }
         }
     }
