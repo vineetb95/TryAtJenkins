@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'Add build steps here'
+                sh 'echo "Add build steps here"'
             }
         }
         stage('Deploy to 3000') { 
