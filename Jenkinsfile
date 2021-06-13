@@ -3,8 +3,15 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'echo "Pull the new code and restart the server at 3000"'
-                sh 'pwd'
+                sh 'Add build steps here'
+            }
+        }
+        stage('Deploy to 3000') { 
+            steps {
+                sh 'cd /root/TryAtJenkins'
+                sh 'git pull origin master'
+                sh 'npm install'
+                sh 'pm2 restart 0'
             }
         }
     }
