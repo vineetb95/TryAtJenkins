@@ -16,7 +16,7 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: 'dc51de26-3370-4d54-a86f-659d0ba2005b', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'ec2-user')]) {
                         remote.user = 'ec2-user'
                         remote.identityFile = identity
-                        sshScript remote: remote, script: 'scripts/deploy3000.sh'
+                        sshCommand remote: remote, command: 'sh scripts/deploy3000.sh'
                     }
                 }
             }
