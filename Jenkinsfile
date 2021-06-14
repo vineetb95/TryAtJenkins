@@ -9,8 +9,14 @@ pipeline {
         }
         stage('User input') {
         	input {
-  					message 'Is dev env ok?'
+				message 'Is dev env OK?'
+				ok 'OK'
+				parameters {
+					booleanParam 'looksGood'
+				}
 			}
+			echo "ans ${looksGood}"
+
 		}
 		stage('Deploy to production') { 
             steps {
