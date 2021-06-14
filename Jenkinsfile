@@ -15,7 +15,9 @@ pipeline {
 					booleanParam 'looksGood'
 				}
 			}
-			echo "ans ${looksGood}"
+			steps{
+				echo "ans ${looksGood}"
+			}
 
 		}
 		stage('Deploy to production') { 
