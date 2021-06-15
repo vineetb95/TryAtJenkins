@@ -44,6 +44,7 @@ pipeline {
                     sh 'git remote rm origin'
                     sh "git remote add origin 'git@github.com:vineetb95/TryAtJenkins.git'"
                     sh 'git push origin'
+                    sh 'git push --set-upstream origin master'
                 }
 
             }
