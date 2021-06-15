@@ -41,7 +41,7 @@ pipeline {
                 sh 'git checkout master'
                 sh 'git merge dev'
                 sshagent(['jenkGithub']) {
-                    sh('git push origin')
+                    sh('git push https://github.com/vineetb95/TryAtJenkins.git')
                 }
 
             }
