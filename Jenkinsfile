@@ -31,6 +31,13 @@ pipeline {
   //       }
         stage("Commit changes back to production repo"){
             steps{
+                // sh('''
+                //     git checkout -B $TARGET_BRANCH
+                //     git config user.name 'my-ci-user'
+                //     git config user.email 'my-ci-user@users.noreply.github.example.com'
+                //     git add . && git commit -am "[Jenkins CI] Add build file"
+                // ''')
+                sh 'echo $TARGET_BRANCH'
                 sh 'git branch'
             }
         }
