@@ -37,7 +37,7 @@ pipeline {
                 //     git config user.email 'my-ci-user@users.noreply.github.example.com'
                 //     git add . && git commit -am "[Jenkins CI] Add build file"
                 // ''')
-                sh 'echo $TARGET_BRANCH'
+                sh 'git checkout master'
                 sh 'git branch'
             }
         }
