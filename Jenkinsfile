@@ -41,7 +41,7 @@ pipeline {
                 sh 'git checkout master'
                 sh 'git merge dev'
                 withCredentials([usernamePassword(credentialsId: '3abcc784-22bb-4e05-b6a8-b230ae6fbbf9', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO>')
+                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/vineetb95/TryAtJenkins')
                 }
 
 
