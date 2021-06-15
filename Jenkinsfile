@@ -38,7 +38,11 @@ pipeline {
                 //     git add . && git commit -am "[Jenkins CI] Add build file"
                 // ''')
                 sh 'git checkout master'
-                sh 'git branch'
+                sh 'git merge dev'
+                sshagent(['jenkGithub']) {
+                    sh('git push origin')
+                }
+
             }
         }
     }
