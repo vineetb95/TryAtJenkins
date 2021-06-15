@@ -40,12 +40,10 @@ pipeline {
                 sh 'git checkout dev'
                 sh 'git checkout master'
                 sh 'git merge dev'
-                sshagent(['jenkGithub']) {
-                    sh 'git remote rm origin'
-                    sh "git remote add origin 'git@github.com:vineetb95/TryAtJenkins.git'"
-                    // sh 'git push origin'
-                    sh 'git push --set-upstream origin master'
+                withCredentials([usernamePassword(credentialsId: '3abcc784-22bb-4e05-b6a8-b230ae6fbbf9', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO>')
                 }
+
 
             }
         }
