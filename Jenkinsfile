@@ -37,6 +37,7 @@ pipeline {
                 //     git config user.email 'my-ci-user@users.noreply.github.example.com'
                 //     git add . && git commit -am "[Jenkins CI] Add build file"
                 // ''')
+                sh 'git checkout dev'
                 sh 'git checkout master'
                 sh 'git merge dev'
                 sshagent(['jenkGithub']) {
